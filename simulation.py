@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+"""
+Command line executable module to simulate demand of a bike shop.
+
+.. moduleauthor:: Philipp Sommer <philipp.sommer@edu.uni-graz.at>
+.. moduleauthor:: Clemens Eichberger <clemens.eichberger@edu.uni-graz.at>
+"""
+
 import argparse
 import random
 import sys
@@ -31,9 +38,15 @@ def read_distribution(filename):
 
 
 def simulate_total_demand(distribution, days):
+    """
+    Simulates demand according to a given distribution for given days.
+
+    >>> simulate_total_demand({1: 1}, 10)
+    10
+    """
     weight = [distribution[x] for x in distribution]
-    popultion = [x for x in distribution]
-    demand = random.choices(popultion, weight, k=days)
+    population = [x for x in distribution]
+    demand = random.choices(population, weight, k=days)
     total = sum(demand)
     return total
 
@@ -57,3 +70,5 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+    import doctest
+    doctest.testmod()
