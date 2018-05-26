@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-
 import argparse
-from random import random
+import random
 import sys
 
 
@@ -32,7 +31,11 @@ def read_distribution(filename):
 
 
 def simulate_total_demand(distribution, days):
-    raise NotImplementedError
+    weight = [distribution[x] for x in distribution]
+    popultion = [x for x in distribution]
+    demand = random.choices(popultion, weight, k=days)
+    total = sum(demand)
+    return total
 
 
 def main():
